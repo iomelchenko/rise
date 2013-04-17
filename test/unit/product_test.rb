@@ -14,7 +14,7 @@ class ProductTest < ActiveSupport::TestCase
    end
 
    test "products price should not be negative" do
-      product = Product.new(title: "Book",
+      product = Product.new(title: "BookBookBook",
                             description: "good book",
                             image_url: "ruby.png"
                             )
@@ -26,7 +26,7 @@ class ProductTest < ActiveSupport::TestCase
    end
 
    test "products price should not be equal 0" do
-      product = Product.new(title: "Book",
+      product = Product.new(title: "BookBookBook",
                             description: "good book",
                             image_url: "ruby.png"
                             )
@@ -38,7 +38,7 @@ class ProductTest < ActiveSupport::TestCase
    end
 
    test "products price should be positive" do
-      product = Product.new(title: "Book",
+      product = Product.new(title: "BookBookBook",
                             description: "good book",
                             image_url: "ruby.png"
                             )
@@ -48,7 +48,7 @@ class ProductTest < ActiveSupport::TestCase
    end
 
    def new_prod(image_url)
-      product = Product.new(title: "Book",
+      product = Product.new(title: "BookBookBook",
                             description: "good book",
                             image_url: image_url,
                             price: 120.00
@@ -93,6 +93,17 @@ class ProductTest < ActiveSupport::TestCase
       assert_equal I18n.translate('activerecord.errors.messages.taken'), 
                                    product.errors[:title].join('; ')
 
+   end
+
+   test "length of title should be minimum 10 simbols" do
+      product = Product.new(title: "Book",
+                            description: "good book",
+                            image_url: "ruby.png",
+                            price: 10.00
+                            )
+
+      assert product.invalid?
+      assert_equal "min 10", product.errors[:title].join('; ')      
    end
 
 end

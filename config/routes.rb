@@ -1,4 +1,7 @@
 Rise::Application.routes.draw do
+  root :to => 'store#index'
+  get "store/index"
+
   resources :products
 
 
