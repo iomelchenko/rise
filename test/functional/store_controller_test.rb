@@ -9,4 +9,13 @@ class StoreControllerTest < ActionController::TestCase
     assert_select "h3", "Programming Ruby 1.9"
   end
 
+    test "markup needed for store.js.cofee is in place" do
+    get :index
+    assert_response :success
+
+    assert_select '.store .entry > img', 3
+    assert_select '.entry input[type=submit]', 3
+   
+  end
+
 end

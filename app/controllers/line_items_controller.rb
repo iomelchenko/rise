@@ -61,13 +61,13 @@ class LineItemsController < ApplicationController
   # PUT /line_items/1.json
   def update
     @line_item = LineItem.find(params[:id])
-
+binding pry
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to store_index_path, notice: 'Line item was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        #format.html { render action: "edit" }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
@@ -78,12 +78,20 @@ class LineItemsController < ApplicationController
   def destroy
     @cart = current_cart
     @line_item = LineItem.find(params[:id])
-    @line_item.destroy
+    
+    if @line_item.quantity == 1
+      @line_item.destroy
+
+     else 
+       @line_item.quantity -= 1
+       @line_item.update_attributes(params[:line_item])
+    end  
 
     respond_to do |format|
       format.html { redirect_to store_index_path }
-
+      format.js { @current_item = @line_item }
       format.json { head :no_content }
     end
   end
+
 end
