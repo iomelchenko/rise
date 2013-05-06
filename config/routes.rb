@@ -1,4 +1,7 @@
 Rise::Application.routes.draw do
+  resources :paytypes
+
+
   resources :orders
 
 
@@ -11,7 +14,9 @@ Rise::Application.routes.draw do
   root :to => 'store#index'
   get "store/index"
 
-  resources :products
+  resources :products do
+     get :who_bought, on: :member
+  end  
 
 
   # The priority is based upon order of creation:

@@ -1,0 +1,2 @@
+module PaytypesHelper
+end
