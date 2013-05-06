@@ -34,4 +34,9 @@ Rise::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  Rise::Application.configure do
+
+       config.action_mailer.delivery_method = :smtp # | :sendmail
+  end
 end

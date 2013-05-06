@@ -34,4 +34,9 @@ Rise::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  Rise::Application.configure do
+
+       config.action_mailer.delivery_method = :test #| :smtp | :sendmail
+  end
 end

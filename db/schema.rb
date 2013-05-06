@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(:version => 20130506145651) do
     t.string   "name"
     t.text     "address"
     t.string   "email"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "pay_type_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "paytype_id"
   end
 
   create_table "paytypes", :force => true do |t|

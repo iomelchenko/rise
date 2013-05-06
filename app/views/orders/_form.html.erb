@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :pay_type %><br />
-    <%= f.collection_select :pay_type_id, Paytype.all, :id, :pay_type %>
+    <%= f.collection_select :paytype_id, Paytype.all, :id, :pay_type %>
   </div>
   <div class="actions">
     <%= f.submit "Отправить заказ" %>
