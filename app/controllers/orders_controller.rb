@@ -80,6 +80,9 @@ class OrdersController < ApplicationController
       if @order.update_attributes(params[:order])
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
+        if @order.ship_date != params[:ship_date]
+           OrderNotifier.shipped(@order).deliver
+        end  
       else
         format.html { render action: "edit" }
         format.json { render json: @order.errors, status: :unprocessable_entity }

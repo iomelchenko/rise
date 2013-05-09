@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
 
   has_many :line_items, dependent: :destroy
   belongs_to :paytype
-  attr_accessible :address, :email, :name, :paytype_id
+  attr_accessible :address, :email, :name, :paytype_id, :ship_date
 
 
   validates :name, :address, :email, presence: true
