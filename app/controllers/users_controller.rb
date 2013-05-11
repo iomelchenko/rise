@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+ if User.count.zero? 
+     skip_before_filter :authorise, only: [:new, :create] 
+ end     
+
   def index
     @users = User.order(:name)
 
@@ -56,8 +60,11 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+
     @user = User.find(params[:id])
 
+   if @user.authenticate params[:user][:old_password]
+    params[:user].delete(:old_password)
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to users_url, notice: "User  #{@user.name} was successfully updated." }
@@ -67,6 +74,9 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+   else  
+     redirect_to users_url, notice: "Old password is wrong." 
+   end  
   end
 
   # DELETE /users/1

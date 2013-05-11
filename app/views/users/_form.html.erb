@@ -27,7 +27,13 @@
     <div>
       <%= f.label :password_confirmation, "Confirmation" %><br />
       <%= f.password_field :password_confirmation, size: 40 %>
-    </div>    
+    </div>  
+  <% if params[:action] == "edit" || params[:action] == "update"%>  
+    <div>
+      <%= f.label :old_password, "Old password" %><br />
+      <%= f.password_field :old_password , size: 40 %>
+    </div> 
+  <% end %>       
     <div>
       <%= f.submit %>
     </div>

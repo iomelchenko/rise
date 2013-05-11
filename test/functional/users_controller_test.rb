@@ -52,4 +52,10 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to users_path
   end
+  test "should not show user after logout" do
+    logout
+    get :show, id: @user
+
+    assert_redirected_to login_path
+  end  
 end
