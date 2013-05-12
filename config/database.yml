@@ -19,6 +19,14 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
-  database: db_production
-  timeout: 5000
+ # adapter: postgresql
+ # database: db_production
+ # timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  database: rise4net_production
+  pool: 5
+  username: rise4net_cust
+  password: nH3Dcm0zlQLB008Um
+  host: localhost
+ # socket: /tmp/mysql.sock
