@@ -10,7 +10,7 @@
 
 # be sure to change these
 set :user, 'rise4net'
-set :domain, 'rise4net.hostfabrica.ru'
+set :domain, 'rise4.net'
 set :application, 'rise4net'
 
 # adjust if you are using RVM, remove if you are not

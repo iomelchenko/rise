@@ -24,9 +24,9 @@ production:
  # timeout: 5000
   adapter: mysql2
   encoding: utf8
-  database: rise4net_production
+  database: rise_rise4net
   pool: 5
-  username: rise4net_cust
+  username: rise_rise4net
   password: nH3Dcm0zlQLB008Um
   host: localhost
  # socket: /tmp/mysql.sock
