@@ -20,7 +20,7 @@ set :rvm_ruby_string, '1.9.3'
 
 # file paths
 set :repository, "git@github.com:successom/rise.git" # "#{user}@#{domain}:git/#{application}.git"
-set :deploy_to, "/home/#{user}/#{domain}"
+set :deploy_to, "/home/r/rise4net"
 set :ssh_options, { :forward_agent => true }
 
 # distribute your applications across servers (the instructions below put them
