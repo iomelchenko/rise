@@ -67,15 +67,7 @@ Rise::Application.configure do
 
   Rise::Application.configure do
 
-        config.action_mailer.delivery_method = :smtp
-        config.action_mailer.smtp_settings = {
-        :address              => "smtp.hostfabrica.ru",
-        :port                 => 2525,
-        :domain               => "rise4.net",
-        :user_name            => "sales@rise4.net",
-        :password             => "vjqgfhjkm",
-        :authentication       => "cram_md5",
-        :enable_starttls_auto => true  }
+       config.action_mailer.delivery_method = :smtp # | :sendmail
   end
 end
 

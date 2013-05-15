@@ -34,6 +34,8 @@ gem 'will_paginate'
 gem 'bcrypt-ruby'
 gem 'newrelic_rpm'
 gem 'capistrano'
+gem 'execjs'
+gem 'therubyracer'
   #  gem 'thin'
 
 # To use ActiveModel has_secure_password
