@@ -9,14 +9,16 @@ class ProductTest < ActiveSupport::TestCase
       assert product.errors[:title].any?
       assert product.errors[:description].any?
       assert product.errors[:price].any?
-      assert product.errors[:image_url].any?
+      #assert product.errors[:image].any?
 
    end
 
    test "products price should not be negative" do
       product = Product.new(title: "BookBookBook",
                             description: "good book",
-                            image_url: "ruby.png"
+                            image_file_name: "ruby.png",
+                            image_content_type: 'image/png',
+                            image_file_size: 6646
                             )
       product.price = -7
 
@@ -28,7 +30,7 @@ class ProductTest < ActiveSupport::TestCase
    test "products price should not be equal 0" do
       product = Product.new(title: "BookBookBook",
                             description: "good book",
-                            image_url: "ruby.png"
+                            image: "ruby.png"
                             )
       product.price = 0
 
@@ -40,22 +42,22 @@ class ProductTest < ActiveSupport::TestCase
    test "products price should be positive" do
       product = Product.new(title: "BookBookBook",
                             description: "good book",
-                            image_url: "ruby.png"
+                            image: "ruby.png"
                             )
       product.price = 100.00
 
       assert product.valid?
    end
 
-   def new_prod(image_url)
+   def new_prod(image)
       product = Product.new(title: "BookBookBook",
                             description: "good book",
-                            image_url: image_url,
+                            image: image,
                             price: 120.00
                             )
    end	
 
-   test "image_url should be valid" do
+   test "image should be valid" do
      ok = "doo.jpg do1.JPG http://adf/asas/fdfd/do2.jpg doo.gif 
      	   do1.GIF http://adf/asas/fdfd/do2.gif doo.png do1.PNG
      	   http://adf/asas/fdfd/do2.png"
@@ -73,7 +75,7 @@ class ProductTest < ActiveSupport::TestCase
     test "product is not valid without unique title" do
       product = Product.new(title: products(:ruby).title,
                             description: "smart book",
-                            image_url: "rrrr.gif",
+                            image: "rrrr.gif",
                             price: 10.00
                             )
 
@@ -85,7 +87,7 @@ class ProductTest < ActiveSupport::TestCase
     test "product is not valid without unique title - i18n" do
       product = Product.new(title: products(:ruby).title,
                             description: "smart book",
-                            image_url: "rrrr.gif",
+                            image: "rrrr.gif",
                             price: 10.00
                             )
 
@@ -95,15 +97,15 @@ class ProductTest < ActiveSupport::TestCase
 
    end
 
-   test "length of title should be minimum 10 simbols" do
+   test "length of title should be minimum 6 simbols" do
       product = Product.new(title: "Book",
                             description: "good book",
-                            image_url: "ruby.png",
+                            image: "ruby.png",
                             price: 10.00
                             )
 
       assert product.invalid?
-      assert_equal "min 10", product.errors[:title].join('; ')      
+      assert_equal "min 6", product.errors[:title].join('; ')      
    end
 
 end

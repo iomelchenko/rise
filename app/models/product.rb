@@ -1,17 +1,21 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :image_url, :price, :title
+  attr_accessible :description, :price, :title, :image
 
   has_many :line_items
   has_many :orders, through: :line_items
+
+  has_attached_file :image, :styles => { :small => "150x150>" },
+                    :url => "/:attachment/:id/:style/:basename.:extention",
+                    :path => ":rails_root/public/:attachment/:id/:style/:basename.:extention"
   
-  validates :description, :image_url, :title, presence: true
+  validates :description, :title, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validates :title, uniqueness: true
-  validates :image_url, allow_blank: true, format: {
-    with:    %r{\.(gif|jpg|png)$}i,
-    message: 'must be a URL for GIF, JPG or PNG image.'
+  validates :image_file_name, allow_blank: true, format: {
+     with:    %r{\.(gif|jpg|png)$}i,
+     message: 'must be a URL for GIF, JPG or PNG image.'
   }
-  validates :title, length: {:minimum => 10, message: 'min 10'}
+  validates :title, length: {:minimum => 6, message: 'min 6'}
 
 
   private

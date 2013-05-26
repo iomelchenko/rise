@@ -4,14 +4,18 @@ one:
   id: 3
   title: Mystring
   description: Mytext
-  image_url: ruby.png
+  image_file_name: ruby.png
+  image_content_type: image/png
+  image_file_size: 6646
   price: 99.99
 
 two:
   id: 2
   title: Mystring
   description: Mytext
-  image_url: ruby.png
+  image_file_name: ruby.png
+  image_content_type: image/png
+  image_file_size: 6646  
   price: 99.99
 
 ruby:
@@ -21,7 +25,9 @@ ruby:
         Ruby is the fastest growing and most exciting dynamic language
         out there. If you need to get working programs delivered fast,
         you should add Ruby to your toolbox.
-  image_url: ruby.jpg
+  image_file_name: ruby.jpg
+  image_content_type: image/png
+  image_file_size: 6646  
   price: 49.50
 
 

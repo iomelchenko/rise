@@ -44,7 +44,7 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-    #binding pry
+
     @line_item = @cart.add_product(product.id, product.price)
 
     respond_to do |format|

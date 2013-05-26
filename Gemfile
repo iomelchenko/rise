@@ -8,7 +8,7 @@ gem 'rails', '3.2.13'
 group :development, :test do
   gem 'sqlite3'
   gem 'pry'
-
+  gem 'thin' 
 end
 
 group :production do
@@ -36,7 +36,8 @@ gem 'newrelic_rpm'
 gem 'capistrano'
 gem 'execjs'
 gem 'therubyracer'
-  #  gem 'thin'
+gem 'paperclip'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

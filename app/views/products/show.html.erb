@@ -10,10 +10,14 @@
   <%= @product.description %>
 </p>
 
-<p>
-  <b>Image url:</b>
-  <%= @product.image_url %>
-</p>
+<% if @product.image? %>
+	<p>
+	  <%= image_tag @product.image.url %>
+	  <br/>
+	  <%= link_to @product.image.url, @product.image.url %>
+	</p>
+
+<% end %>
 
 <p>
   <b>Price:</b>

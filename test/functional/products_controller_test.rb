@@ -6,8 +6,8 @@ class ProductsControllerTest < ActionController::TestCase
     @update = { title: 'Ruby!Ruby!',
                  description: 'cool!',
                  price: 17.00,
-                 image_url: "ruby.jpg"
-                }
+                 image: { @original_filename => "rails.png", @content_type => "image/png", @headers => "Content-Disposition: form-data; name=\"product[image]\"; filename=\"rails.png\"\r\nContent-Type: image/png\r\n" }
+               }
   end
 
   test "should get index" do
