@@ -37,6 +37,10 @@ gem 'capistrano'
 gem 'execjs'
 gem 'therubyracer'
 gem 'paperclip'
+gem "simple-navigation"
+gem "haml"
+gem 'superfish-rails'
+#gem 'prototype-rails'
 
 
 # To use ActiveModel has_secure_password

@@ -9,5 +9,10 @@ module ApplicationHelper
 	   content_tag("div", attributes, &block)
 
 	end
+	def example(options={}, &block)
+		    out = render :partial => 'products/header', :locals => {:options => options}
+		    out << capture(&block)
+		    out
+    end
 
 end

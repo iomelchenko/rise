@@ -2,15 +2,17 @@
 <html>
 <head>
   <title>Cosmetics online store</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag   "navigation", "application", :media => "all" %>
+  <%= javascript_include_tag "jquery", "application", "jquery.superfish" %>
   <%= csrf_meta_tags %>
 
 </head>
 <body class="<%= controller.controller_name %>">
+
 	<div id="banner">
        <% #image_tag("logo.png") %>
        <%= @page_title || "Cosmetics Yard" %>
+
 	</div>	
 	<div id="columns">
        <div id="side">
@@ -19,8 +21,7 @@
                  <%= render @cart %>
               <% end %>
             <% end %>  
-
-
+            <%= render :partial =>  'products/navigate' %>
 
        	   <ul>
                <li> <%= link_to "Home", store_index_path %> </li>
@@ -37,6 +38,7 @@
            </ul>  
             <li> <%= button_to "Logout", logout_path, method: :delete %> </li>           
           <% end %>
+
 
        </div>
            <div id="main">
