@@ -9,10 +9,22 @@ module ApplicationHelper
 	   content_tag("div", attributes, &block)
 
 	end
-	def example(options={}, &block)
+	def cataloge(options={}, &block)
 		    out = render :partial => 'products/header', :locals => {:options => options}
 		    out << capture(&block)
 		    out
     end
+
+    
+
+	def javascript(*files)
+	  content_for(:head) { javascript_include_tag(*files) }
+	end
+
+	def stylesheet(*files)
+	  content_for(:head) { stylesheet_link_tag(*files) }
+	end
+
+
 
 end

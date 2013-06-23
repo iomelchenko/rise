@@ -1,10 +1,8 @@
-.example
-  = example :title => 'Example 4: Javascript Menu with Superfish', :haml => '279476', :sass => '279472', :css => '279470' do
-    #example_4.example_content
-      #js_navigation= render_navigation(:expand_all => true)
-      .content
-        .breadcrumbs
-      .clear_float
+#example_4.example_content1
+  #js_navigation= render_navigation(:expand_all => true, :renderer => :bootstrap)
+  .content
+    .breadcrumbs
+  .clear_float
 
 :javascript
   $(document).ready(function(){ 

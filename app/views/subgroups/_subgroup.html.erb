@@ -1,0 +1,19 @@
+  <p>
+    <strong>Name:</strong>
+    <%= subgroup.name %>
+  </p>
+ 
+  <p>
+    <strong>Describe:</strong>
+    <%= subgroup.describe %>
+  </p>
+
+  <p>
+  <%= link_to 'Edit', edit_group_subgroup_path(@group, subgroup) %> 
+  </p>
+
+  <p>
+  <%= link_to 'Destroy Subgroup', [subgroup.group, subgroup],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+  </p>

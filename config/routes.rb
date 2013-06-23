@@ -1,4 +1,5 @@
 Rise::Application.routes.draw do
+
   get 'admin' => "admin#index"
 
   controller :sessions do
@@ -13,9 +14,14 @@ Rise::Application.routes.draw do
   resources :line_items
   resources :carts
 
+  resources :groups do 
+     resources :subgroups
+  end
+
 
   root :to => 'store#index'
   get "store/index"
+  get "javascripts/dynamic_subgroups"
 
   resources :products do
      get :who_bought, on: :member

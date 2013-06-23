@@ -11,9 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130526121526) do
+ActiveRecord::Schema.define(:version => 20130611181031) do
 
   create_table "carts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.text     "discribe"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -54,7 +61,19 @@ ActiveRecord::Schema.define(:version => 20130526121526) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "group_id"
+    t.integer  "subgroup_id"
   end
+
+  create_table "subgroups", :force => true do |t|
+    t.string   "name"
+    t.text     "describe"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "subgroups", ["group_id"], :name => "index_subgroups_on_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

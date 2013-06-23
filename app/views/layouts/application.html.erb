@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag   "navigation", "application", :media => "all" %>
   <%= javascript_include_tag "jquery", "application", "jquery.superfish" %>
   <%= csrf_meta_tags %>
+  <%= yield(:head) %>
 
 </head>
 <body class="<%= controller.controller_name %>">
@@ -12,6 +13,7 @@
 	<div id="banner">
        <% #image_tag("logo.png") %>
        <%= @page_title || "Cosmetics Yard" %>
+
 
 	</div>	
 	<div id="columns">
@@ -21,7 +23,7 @@
                  <%= render @cart %>
               <% end %>
             <% end %>  
-            <%= render :partial =>  'products/navigate' %>
+            
 
        	   <ul>
                <li> <%= link_to "Home", store_index_path %> </li>
@@ -34,7 +36,10 @@
            <ul>
                <li> <%= link_to "Orders", orders_path %> </li>
                <li> <%= link_to "Products", products_path %> </li>
+               <li> <%= link_to "Groups", groups_path %> </li>
                <li> <%= link_to "Users", users_path %> </li>
+               <li> <%= link_to "Payment types", paytypes_path %> </li>
+
            </ul>  
             <li> <%= button_to "Logout", logout_path, method: :delete %> </li>           
           <% end %>
@@ -42,6 +47,7 @@
 
        </div>
            <div id="main">
+            <%= render :partial =>  'products/navigate' %>
              <%= yield %>
            </div>	
 

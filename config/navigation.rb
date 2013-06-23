@@ -60,7 +60,7 @@ SimpleNavigation::Configuration.run do |navigation|
  #   end
 
  navigation.items do |primary|
-      primary.item :c1, 'Декоративная косметика', cosm1_store_index_path do |cosm|
+      primary.item :c1, 'Декоративная косметика', cosm1_store_index_path, :icon => ['icon-book', 'icon-white'] do |cosm|
           cosm.item :c11, 'Помады', cosm11_store_index_path
           cosm.item :c12, 'Тушь', cosm12_store_index_path          
           cosm.item :c13, 'Тени', cosm13_store_index_path          

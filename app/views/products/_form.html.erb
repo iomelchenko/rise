@@ -1,3 +1,5 @@
+<% javascript javascripts_dynamic_subgroups_path %>
+
 <%= form_for(@product, :html => { multipart: true  }) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -19,6 +21,14 @@
     <%= f.label :description %><br />
     <%= f.text_area :description, rows: 6 %>
   </div>
+  <p>
+      <label for="product_group_id">Group:</label>
+      <%= f.collection_select :group_id, Group.find(:all), :id, :name, :prompt => "Select a Group" %>
+  </p>
+  <p id="subgroup_field">
+      <label for="product_subgroup_id">Subgroup:</label>
+      <%= f.collection_select :subgroup_id, Subgroup.find(:all), :id, :name, :prompt => "Select Subgroup" %>
+  </p>
   <div class="field">
     <%= f.label :image %><br />
     <%= f.file_field :image %>

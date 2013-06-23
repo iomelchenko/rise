@@ -1,0 +1,25 @@
+var subgroups = new Array();
+<% for subgroup in @subgroups -%>
+  subgroups.push(new Array(<%= subgroup.group_id %>, '<%=h subgroup.name %>', <%= subgroup.id %>));
+<% end -%>
+
+function groupSelected() {
+  group_id = $('product_group_id').getValue();
+  options = $('product_subgroup_id').options;
+  options.length = 1;
+  subgroups.each(function(subgroup) {
+    if (subgroup[0] == group_id) {
+      options[options.length] = new Option(subgroup[1], subgroup[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('subgroup_field').hide();
+  } else {
+    $('subgroup_field').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  $('subgroup_field').hide();
+  $('product_group_id').observe('change', groupSelected);
+});

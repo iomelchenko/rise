@@ -10,6 +10,16 @@
   <%= @product.description %>
 </p>
 
+<p>
+  <b>Group:</b>
+  <%= @product.group.name %>
+</p>
+
+<p>
+  <b>SubGroup:</b>
+  <%= @product.subgroup.name %>
+</p>
+
 <% if @product.image? %>
 	<p>
 	  <%= image_tag @product.image.url %>
