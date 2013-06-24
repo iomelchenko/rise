@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SubgroupsController < ApplicationController
   # GET /subgroups
   # GET /subgroups.json

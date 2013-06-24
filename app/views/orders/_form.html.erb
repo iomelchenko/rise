@@ -12,20 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :"Имя, фамилия" %><br />
     <%= f.text_field :name, size: 40 %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label :Адрес %><br />
     <%= f.text_area :address, rows: 5, cols: 40 %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :"Ваш электронный адрес" %><br />
     <%= f.email_field :email, size: 40 %>
   </div>
   <div class="field">
-    <%= f.label :pay_type %><br />
-    <%= f.collection_select :paytype_id, Paytype.all, :id, :pay_type %>
+    <%= f.label :"Форма платежа" %><br />
+    <%= f.collection_select :paytype_id, Paytype.all, :id, :pay_type, :prompt => 'Выберите форму' %>
   </div>
  <% unless params[:action] == "new" %> 
   <div class="field">

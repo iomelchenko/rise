@@ -27,7 +27,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'simple-navigation-bootstrap'
+
 end
 
 gem 'jquery-rails'
@@ -41,6 +41,11 @@ gem 'paperclip'
 gem "simple-navigation"
 gem "haml"
 gem 'superfish-rails'
+gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'twitter-bootstrap-rails'
+gem 'simple-navigation-bootstrap'
+gem 'bootstrap-sass'
+gem 'magic_encoding'
 #gem 'prototype-rails'
 
 

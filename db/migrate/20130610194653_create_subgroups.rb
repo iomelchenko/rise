@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateSubgroups < ActiveRecord::Migration
   def change
     create_table :subgroups do |t|

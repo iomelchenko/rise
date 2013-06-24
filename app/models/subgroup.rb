@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Subgroup < ActiveRecord::Base
   belongs_to :group
   has_many :products  

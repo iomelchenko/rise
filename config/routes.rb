@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Rise::Application.routes.draw do
 
   get 'admin' => "admin#index"

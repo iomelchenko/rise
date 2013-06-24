@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class OrdersController < ApplicationController
    skip_before_filter :authorise, only: [:create, :new]
 

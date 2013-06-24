@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPayTypeIdToOrder < ActiveRecord::Migration
   def up
   	add_column :orders, :paytype_id, :integer

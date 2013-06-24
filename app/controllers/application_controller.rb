@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   before_filter :authorise
   protect_from_forgery

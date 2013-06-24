@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class LineItem < ActiveRecord::Base
   attr_accessible :cart_id, :product_id, :quantity, :price, :order_id
   belongs_to :product

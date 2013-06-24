@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ApplicationHelper
 
 	def hidden_div_if(condition, attributes = {}, &block)

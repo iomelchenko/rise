@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PaytypesController < ApplicationController
   # GET /paytypes
   # GET /paytypes.json

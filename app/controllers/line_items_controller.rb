@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class LineItemsController < ApplicationController
    skip_before_filter :authorise, only: [:create, :destroy]
 

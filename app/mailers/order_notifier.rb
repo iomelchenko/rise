@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class OrderNotifier < ActionMailer::Base
   default from: "sales@rise4.net"
 

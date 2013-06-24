@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # -*- coding: utf-8 -*-
 # Configures your navigation
 SimpleNavigation::Configuration.run do |navigation|
@@ -66,22 +67,23 @@ SimpleNavigation::Configuration.run do |navigation|
           cosm.item :c13, 'Тени', cosm13_store_index_path          
           cosm.item :c14, 'Лаки', cosm14_store_index_path                              
       end
-      primary.item :l1, 'Женское белье', lingerie1_store_index_path do |lingerie|
+      primary.item :l1, 'Женское белье', lingerie1_store_index_path, :icon => ['icon-book', 'icon-white'] do |lingerie|
           lingerie.item :l11, 'Нижнее белье', lingerie11_store_index_path
           lingerie.item :l12, 'Бюстгальтеры', lingerie12_store_index_path
           lingerie.item :l13, 'Трусы', lingerie13_store_index_path                   
       end
-      primary.item :p1, 'Парфюмерия', parfum1_store_index_path do |parfum|
+      primary.item :p1, 'Парфюмерия', parfum1_store_index_path, :icon => ['icon-book', 'icon-white'] do |parfum|
           parfum.item :p11, 'Мужская', parfum11_store_index_path
           parfum.item :p12, 'Женская', parfum12_store_index_path
           parfum.item :p13, 'Кремы', parfum13_store_index_path                    
       end
-      primary.item :t1, 'Детские игрушки', toys1_store_index_path do |toys|
+      primary.item :t1, 'Детские игрушки', toys1_store_index_path, :icon => ['icon-book', 'icon-white'] do |toys|
           toys.item :t11, 'до 1-го года', toys11_store_index_path
           toys.item :t12, 'от 1-го до 3-х лет', toys12_store_index_path
           toys.item :t13, 'от 3-х до 5-ти лет', toys13_store_index_path                    
           toys.item :t14, 'от 5-ти лет и старше', toys14_store_index_path           
-      end      
+      end     
+      primary.dom_class = 'nav'     
 end
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

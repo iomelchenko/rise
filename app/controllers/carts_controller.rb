@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CartsController < ApplicationController
    skip_before_filter :authorise, only: [:create, :update, :destroy]
   # GET /carts
