@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ProductsController < ApplicationController
+  skip_before_filter :authorise, only: [:show]
   # GET /products
   # GET /products.json
   def index
@@ -14,6 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @cart = current_cart
     @product = Product.find(params[:id])
 
     respond_to do |format|
