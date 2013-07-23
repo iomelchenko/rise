@@ -9,6 +9,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry'
   gem 'thin' 
+  gem 'rspec-rails'
 end
 
 group :production do
