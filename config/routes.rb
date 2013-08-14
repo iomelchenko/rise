@@ -20,11 +20,12 @@ Rise::Application.routes.draw do
   end
 
 
-  root :to => 'store#index'
+  root :to => 'store#index', as: 'store'
   get "store/index"
   get "javascripts/dynamic_subgroups"
 
   resources :products do
+     resources :subcode_prods    
      get :who_bought, on: :member
   end  
 

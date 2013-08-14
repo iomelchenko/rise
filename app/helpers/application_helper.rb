@@ -26,6 +26,14 @@ module ApplicationHelper
 	  content_for(:head) { stylesheet_link_tag(*files) }
 	end
 
+	def current_user_admin?
 
+        true if User.find(session[:user_id]).name.downcase == "admin"
+
+	    rescue ActiveRecord::RecordNotFound        	
+
+        false
+    end
+   
 
 end

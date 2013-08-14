@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   before_filter :authorise
   protect_from_forgery
 
-
-
     protected
 	    def authorise
 	    	unless User.find_by_id(session[:user_id])
@@ -26,6 +24,5 @@ class ApplicationController < ActionController::Base
 	             cart
 
 	      end    
-
 
 end

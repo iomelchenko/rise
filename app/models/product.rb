@@ -7,6 +7,9 @@ class Product < ActiveRecord::Base
   has_many :orders, through: :line_items
   belongs_to :group
   belongs_to :subgroup
+  has_many :subcode_prods, dependent: :destroy
+
+  #before destroy  :enshure_not_referenced_by_any_line_item
 
   has_attached_file :image, :styles => { :small => "150x150>" },
                     :url => "/:attachment/:id/:style/:basename.:extention",
@@ -39,6 +42,7 @@ class Product < ActiveRecord::Base
   scope :toys_13, joins(:group).joins(:subgroup).where("subgroups.name" => "от 3-х до 5-ти лет").order(:title)
   scope :toys_14, joins(:group).joins(:subgroup).where("subgroups.name" => "от 5-ти лет и старше").order(:title)
 
+  
   private
 
   def enshure_not_referenced_by_any_line_item

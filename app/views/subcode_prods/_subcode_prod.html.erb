@@ -1,0 +1,14 @@
+  <p>
+    <strong>Код товарной позиции:</strong>
+    <%= subcode_prod.subcode %>
+  </p>
+
+  <p>
+  <%= link_to 'Редактировать', edit_product_subcode_prod_path(@product, subcode_prod) %> 
+  </p>
+
+  <p>
+  <%= link_to 'Удалить', [subcode_prod.product, subcode_prod],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+  </p>

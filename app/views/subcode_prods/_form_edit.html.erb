@@ -1,0 +1,9 @@
+<%= form_for([@product, @subcode_prod]) do |f| %>
+  <p>
+    <%= f.label :Subcode %><br />
+    <%= f.text_field :subcode %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

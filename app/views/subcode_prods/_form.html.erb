@@ -1,0 +1,9 @@
+<%= form_for([@product, @product.subcode_prods.build]) do |f| %>
+  <p>
+    <%= f.label :"Введите код товара" %><br />
+    <%= f.text_field :subcode %>
+  </p>
+  <p>
+    <%= f.submit "Добавить новый код"%>
+  </p>
+<% end %>

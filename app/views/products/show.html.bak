@@ -45,19 +45,16 @@
 
   <% else %>
 
+  <p>
+  <b>Выберите код товара:</b> </br>
 
+     <%= collection_select :product_id, @subcode_prod_id, SubcodeProd.where(product_id: @product.id), :id, :subcode  %>
+     <%= a = select_tag(:product_id, options_for_select([['Lisbon', 1], ['Madrid', 2]])) %>
+    
+  </p>
 
-    <%= form_tag line_items_path(product_id: @product), method: "post", remote: true do %>
-      <% if SubcodeProd.subcodeexist(@product.id).count > 0 %>
-        <b>Выберите код товара:</b> </br>
-        <%= collection_select :subcode, @subcode_prod_id, SubcodeProd.subcodeexist(@product.id), :id, :subcode %>  </br>  
-      <% end %>      
-        <%= submit_tag 'Добавить в корзину' %>
-    <% end %>
-
+     <%= button_to 'Добавить в корзину', line_items_path(product_id: @product, as: :product_id), remote: true %>
    </br>
      <%= link_to "Вернуться к каталогу", store_index_path %>
 
  <% end %>
-
-
