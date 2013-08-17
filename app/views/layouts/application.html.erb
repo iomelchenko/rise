@@ -23,15 +23,15 @@
             <% end %>  
         <div class="nav nav-tabs nav-stacked">
           <li class="active">
-          <%= link_to "Home", store_index_path %>
+          <%= link_to "Главная", store_index_path %>
            <li> <%= link_to "Admins login", login_path %> </li>
             <% if session[:user_id] %>
-                 <li> <%= link_to "Orders", orders_path %> </li>
-                 <li> <%= link_to "Products", products_path %> </li>
-                 <li> <%= link_to "Groups", groups_path %> </li>
+                 <li> <%= link_to "Заказы", orders_path %> </li>
+                 <li> <%= link_to "Продукты", products_path %> </li>
+                 <li> <%= link_to "Товарные Группы / Подгруппы", groups_path %> </li>
                  <li> <%= link_to "Users", users_path %> </li>
-                 <li> <%= link_to "Payment types", paytypes_path %> </li>
-                 <li> <%= link_to "Logout", logout_path, method: :delete %> </li>           
+                 <li> <%= link_to "Типы платежей", paytypes_path %> </li>
+                 <li> <%= link_to "Выйти из админки", logout_path, method: :delete %> </li>           
             <% end %>
           </li>
         </div> 

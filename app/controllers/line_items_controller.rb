@@ -46,8 +46,9 @@ class LineItemsController < ApplicationController
     @cart = current_cart
     product = Product.find(params[:product_id])
     subcode = params[:"subcode"][0].to_i if params[:"subcode"]
+    quantity = params["line_items"]["quantity"].to_i if params["line_items"]
 
-    @line_item = @cart.add_product(product.id, product.price, subcode)
+    @line_item = @cart.add_product(product.id, product.price, subcode, quantity)
 
     respond_to do |format|
       if @line_item.save

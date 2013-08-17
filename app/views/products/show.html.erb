@@ -35,10 +35,10 @@
       <b>Подгруппа:</b> 
       <%= @product.subgroup.name %>
     </p>     
-     <h2>Коды товарных позиций</h2>
+     <h3>Коды товарных позиций</h3>
      <%= render @product.subcode_prods %>
 
-     <h2>Добавить код к данному продукту:</h2>
+     <h3>Добавить код к данному продукту:</h3>
      <%= render "subcode_prods/form" %>
      <%= link_to 'Редактировать продукт', edit_product_path(@product) %> |
      <%= link_to 'Вернуться к перечню продуктов', products_path %>
@@ -50,8 +50,10 @@
     <%= form_tag line_items_path(product_id: @product), method: "post", remote: true do %>
       <% if SubcodeProd.subcodeexist(@product.id).count > 0 %>
         <b>Выберите код товара:</b> </br>
-        <%= collection_select :subcode, @subcode_prod_id, SubcodeProd.subcodeexist(@product.id), :id, :subcode %>  </br>  
-      <% end %>      
+        <%= collection_select :subcode, @subcode_prod_id, SubcodeProd.subcodeexist(@product.id), :id, :subcode, html_options = {:class => "span3"} %>  </br>  
+      <% end %> 
+      <b>Количество:</b> </br>
+      <%= text_field :line_items, :quantity, value: 1, :class => "span1" %>  </br>
         <%= submit_tag 'Добавить в корзину' %>
     <% end %>
 

@@ -1,19 +1,19 @@
   <p>
-    <strong>Name:</strong>
+    <strong>Наименование подгруппы:</strong>
     <%= subgroup.name %>
   </p>
  
   <p>
-    <strong>Describe:</strong>
+    <strong>Описание:</strong>
     <%= subgroup.describe %>
   </p>
 
   <p>
-  <%= link_to 'Edit', edit_group_subgroup_path(@group, subgroup) %> 
+  <%= link_to 'Редактировать', edit_group_subgroup_path(@group, subgroup) %> 
   </p>
 
   <p>
-  <%= link_to 'Destroy Subgroup', [subgroup.group, subgroup],
+  <%= link_to 'Удалить', [subgroup.group, subgroup],
                :confirm => 'Are you sure?',
                :method => :delete %>
   </p>

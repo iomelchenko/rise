@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>Наименование группы:</b>
   <%= @group.name %>
 </p>
 
 <p>
-  <b>Discribe:</b>
+  <b>Описание:</b>
   <%= @group.discribe %>
 </p>
 
-<h2>SubGroups</h2>
+<h3>Подгруппы</h3>
 <%= render @group.subgroups %>
 
-<h2>Add a subgroup:</h2>
+<h3>Добавление подгруппы в данную группу:</h3>
 <%= render "subgroups/form" %>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<%= link_to 'Редактировать', edit_group_path(@group) %> |
+<%= link_to 'Вернуться к перечню групп', groups_path %>

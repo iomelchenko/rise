@@ -14,7 +14,15 @@
     <div class="price_line">
 
     <span class ="price"> <%= number_to_currency(product.price, :unit => "грн. ", :separator => ",") %> </span>
-        <%= button_to 'Добавить в корзину', line_items_path(product_id: product),remote: true %>
+    <%= form_tag line_items_path(product_id: product), method: "post", remote: true do %>
+        <%= submit_tag 'Добавить в корзину' %>
+        <b>количество:</b>
+        <%= text_field :line_items, :quantity, value: 1, :class => "span1" %> 
+      <% if SubcodeProd.subcodeexist(product.id).count > 0 %>
+        <b>код товара:</b>
+        <%= collection_select :subcode, @subcode_prod_id, SubcodeProd.subcodeexist(product.id), :id, :subcode, :class => "span1" %>   
+      <% end %> 
+    <% end %>
     </div>
    </div>
 <% end %>
