@@ -9,7 +9,7 @@
             <td><%= line_item.subcode_prod.subcode if line_item.subcode_prod_id != 0 %> </td>            
            
          	<td class= "item_price"><%= number_to_currency(line_item.total_price, :unit => "грн. ", :separator => ",") %> </td>
-           <% unless action_name == "shipped" %> 
+           <% unless action_name == "shipped" or action_name == "received" %> 
             <td><%= link_to 'удалить', line_item, method: :delete, remote: true %></td>
            <% end %> 
 
