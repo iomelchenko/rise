@@ -24,25 +24,6 @@ class Product < ActiveRecord::Base
   }
   validates :title, length: {:minimum => 6, message: 'min 6'}
 
-  scope :cosm_11, joins(:group).joins(:subgroup).where("subgroups.name" => "Помады").order(:title)
-  scope :cosm_12, joins(:group).joins(:subgroup).where("subgroups.name" => "Тушь").order(:title)
-  scope :cosm_13, joins(:group).joins(:subgroup).where("subgroups.name" => "Тени").order(:title)
-  scope :cosm_14, joins(:group).joins(:subgroup).where("subgroups.name" => "Лаки").order(:title)
-
-  scope :lingerie_11, joins(:group).joins(:subgroup).where("subgroups.name" => "Нижнее белье").order(:title)
-  scope :lingerie_12, joins(:group).joins(:subgroup).where("subgroups.name" => "Бюстгальтеры").order(:title)
-  scope :lingerie_13, joins(:group).joins(:subgroup).where("subgroups.name" => "Трусы").order(:title)    
-  
-  scope :parfum_11, joins(:group).joins(:subgroup).where("subgroups.name" => "Мужская").order(:title)
-  scope :parfum_12, joins(:group).joins(:subgroup).where("subgroups.name" => "Женская").order(:title)
-  scope :parfum_13, joins(:group).joins(:subgroup).where("subgroups.name" => "Кремы").order(:title)
-
-  scope :toys_11, joins(:group).joins(:subgroup).where("subgroups.name" => "до 1-го года").order(:title)
-  scope :toys_12, joins(:group).joins(:subgroup).where("subgroups.name" => "от 1-го до 3-х лет").order(:title)
-  scope :toys_13, joins(:group).joins(:subgroup).where("subgroups.name" => "от 3-х до 5-ти лет").order(:title)
-  scope :toys_14, joins(:group).joins(:subgroup).where("subgroups.name" => "от 5-ти лет и старше").order(:title)
-
-  
   private
 
   def enshure_not_referenced_by_any_line_item

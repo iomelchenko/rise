@@ -61,17 +61,30 @@ SimpleNavigation::Configuration.run do |navigation|
  #   end
 
  navigation.items do |primary|
-    Group.all.each do |group|  
-      primary.item :"{#group.id}", group.name, :icon => ['icon-book', 'icon-white'] do |nav_subgroup|
-        group.subgroups.each do |subgroup|  
-          #nav_subgroup.item :c11, 'Помады', cataloge_store_index_path(subgroup: 'Помады')
-          nav_subgroup.item :"{#subgroup.id}", subgroup.name, cataloge_store_index_path(subgroup: subgroup.name)
-        end  
+      primary.item :c1, 'Декоративная косметика', :icon => ['icon-book', 'icon-white'] do |cosm|
+          cosm.item :c11, 'Помады', cataloge_store_index_path(subgroup: 'Помады')
+          cosm.item :c12, 'Тушь', cataloge_store_index_path(subgroup: 'Тушь')
+          cosm.item :c13, 'Тени', cataloge_store_index_path(subgroup: 'Тени')
+          cosm.item :c14, 'Лаки', cataloge_store_index_path(subgroup: 'Лаки')
       end
-    end  
-       primary.dom_class = 'nav'     
+      primary.item :l1, 'Женское белье', :icon => ['icon-book', 'icon-white'] do |lingerie|
+          lingerie.item :l11, 'Нижнее белье', cataloge_store_index_path(subgroup: 'Нижнее белье')
+          lingerie.item :l12, 'Бюстгальтеры', cataloge_store_index_path(subgroup: 'Бюстгальтеры')
+          lingerie.item :l13, 'Трусы', cataloge_store_index_path(subgroup: 'Трусы')
+      end
+      primary.item :p1, 'Парфюмерия', :icon => ['icon-book', 'icon-white'] do |parfum|
+          parfum.item :p11, 'Мужская', cataloge_store_index_path(subgroup: 'Мужская')
+          parfum.item :p12, 'Женская', cataloge_store_index_path(subgroup: 'Женская')
+          parfum.item :p13, 'Кремы', cataloge_store_index_path(subgroup: 'Кремы')
+      end
+      primary.item :t1, 'Детские игрушки', :icon => ['icon-book', 'icon-white'] do |toys|
+          toys.item :t11, 'до 1-го года', cataloge_store_index_path(subgroup: 'до 1-го года')
+          toys.item :t12, 'от 1-го до 3-х лет', cataloge_store_index_path(subgroup: 'от 1-го до 3-х лет')
+          toys.item :t13, 'от 3-х до 5-ти лет', cataloge_store_index_path(subgroup: 'от 3-х до 5-ти лет')
+          toys.item :t14, 'от 5-ти лет и старше', cataloge_store_index_path(subgroup: 'от 5-ти лет и старше')
+      end     
+      primary.dom_class = 'nav'     
 end
-
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.

@@ -31,28 +31,7 @@ Rise::Application.routes.draw do
 
   resources :store do
     collection do
-      get :cosm1
-      get :cosm11
-      get :cosm12
-      get :cosm13
-      get :cosm14
-
-      get :lingerie1            
-      get :lingerie11
-      get :lingerie12
-      get :lingerie13
-
-      get :parfum1                      
-      get :parfum11
-      get :parfum12
-      get :parfum13
-
-      get :toys1
-      get :toys11
-      get :toys12
-      get :toys13
-      get :toys14
-                             
+      get :cataloge
     end
   end
   
