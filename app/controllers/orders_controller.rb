@@ -61,9 +61,10 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+
         Cart.destroy(current_cart)
-        session[:cart_id] = nil
-        OrderNotifier.received(@order).deliver
+        session[:cart_id] = nil        
+        OrderNotifier.received(@order).deliver        
         format.html { redirect_to store_index_path, notice: 'Thank you for you order.' }
         format.json { render json: @order, status: :created, location: @order }
       else

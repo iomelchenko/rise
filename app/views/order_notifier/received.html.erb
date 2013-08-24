@@ -16,12 +16,14 @@
 </table>	
 
 <p>
-  Общая сумма заказа
-  <%= number_to_currency(@cart.total_price, :unit => "грн. ", :separator => ",") %>
+  Общая сумма заказа 
+
+  <%= number_to_currency(@order.line_items.to_a.sum { |item| (item.price*item.quantity) }, :unit => "грн. ", :separator => ",") %>
+
 </p>
 
 <p>
-  Выбранная Вами форма оплаты
+  Выбранная Вами форма оплаты - 
   <%= @order.paytype.pay_type %>
 </p>
 
