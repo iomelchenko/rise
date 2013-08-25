@@ -1,19 +1,23 @@
-  <p>
-    <strong>Наименование подгруппы:</strong>
-    <%= subgroup.name %>
-  </p>
- 
-  <p>
-    <strong>Описание:</strong>
-    <%= subgroup.describe %>
-  </p>
 
-  <p>
-  <%= link_to 'Редактировать', edit_group_subgroup_path(@group, subgroup) %> 
-  </p>
+  <tbody>
+      <tr>
+        <td><%= subgroup.name %></td>
+        <td><%= subgroup.describe %></td>
+        <td>
+        
+          <%= link_to t('.edit', :default => "Редактировать"),
+                      edit_group_subgroup_path(@group, subgroup), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => "Удалить"),
+                      [subgroup.group, subgroup],
+                      :method => :delete,
+                      data: { confirm: 'Вы уверены?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
 
-  <p>
-  <%= link_to 'Удалить', [subgroup.group, subgroup],
-               :confirm => 'Are you sure?',
-               :method => :delete %>
-  </p>
+  </tbody>
+
+
+
+
+

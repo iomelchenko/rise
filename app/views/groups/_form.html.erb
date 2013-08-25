@@ -1,4 +1,4 @@
-<%= form_for(@group) do |f| %>
+<%= form_for @group, :html => { :class => 'form-horizontal' } do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -11,15 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :"Наменование группы" %><br />
-    <%= f.text_field :name %>
+ <div class="control-group">
+    <%= f.label :"Наменование группы", :class => 'control-label' %><br />
+  <div class="controls">    
+    <%= f.text_field :name, :class => 'text_field' %>
   </div>
-  <div class="field">
-    <%= f.label :"Описание" %><br />
-    <%= f.text_area :discribe %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Применить" %>
-  </div>
+ </div>
+ <div class="control-group"> 
+    <%= f.label :"Описание", :class => 'control-label' %><br />
+   <div class="controls">  
+    <%= f.text_area :discribe, :class => 'text_field', :rows => "3"%>
+   </div>
+ </div>  
+
+  <div class="form-actions">
+    <%= f.submit submit_text_button, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => "Вернуться к перечню"),
+                groups_path, :class => 'btn' %>
+  </div>  
 <% end %>

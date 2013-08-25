@@ -10,45 +10,44 @@
 </head>
 <body class="<%= controller.controller_name %>">
 
-
-
   <div class="container">
     <div class="row">
-       <div class="span3">
+        <div class="span3">
 
             <% if @cart %>
               <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
                  <%= render @cart %>
               <% end %>
             <% end %>  
-        <div class="nav nav-tabs nav-stacked">
-          <li class="active">
-          <%= link_to "Главная", store_index_path %>
-           <li> <%= link_to "Admins login", login_path %> </li>
-            <% if session[:user_id] %>
-                 <li> <%= link_to "Заказы", orders_path %> </li>
-                 <li> <%= link_to "Продукты", products_path %> </li>
-                 <li> <%= link_to "Товарные Группы / Подгруппы", groups_path %> </li>
-                 <li> <%= link_to "Users", users_path %> </li>
-                 <li> <%= link_to "Типы платежей", paytypes_path %> </li>
-                 <li> <%= link_to "Выйти из админки", logout_path, method: :delete %> </li>           
-            <% end %>
-          </li>
-        </div> 
-       </div>
-       <div class="span9">
-            <div class="navbar">
-        <div class="navbar-inner">
-            <ul class="nav">
-                    <%= render :partial =>  'products/navigate' %>
-            </ul>
-         </div>
-    </div>
-           <%= yield %>
+            <div class="nav nav-tabs nav-stacked">
+              <li class="active">
+              <%= link_to "Главная", store_index_path %>
+               <li> <%= link_to "Admins login", login_path %> </li>
+                <% if session[:user_id] %>
+                     <li> <%= link_to "Заказы", orders_path %> </li>
+                     <li> <%= link_to "Продукты", products_path %> </li>
+                     <li> <%= link_to "Товарные Группы / Подгруппы", groups_path %> </li>
+                     <li> <%= link_to "Users", users_path %> </li>
+                     <li> <%= link_to "Типы платежей", paytypes_path %> </li>
+                     <li> <%= link_to "Выйти из админки", logout_path, method: :delete %> </li>           
+                <% end %>
+              </li>
+            </div> 
+        </div>
+        <div class="span9">
+         <div class="navbar">
+          <div class="navbar-inner">
+              <ul class="nav">
+                      <%= render :partial =>  'products/navigate' %>
+              </ul>
+          </div>
+         </div> 
+       <%= yield %>
+        </div class="span9">
+
+      
+    
     </div>  
   </div>	
-
-
-
 </body>
 </html>

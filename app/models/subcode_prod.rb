@@ -7,6 +7,7 @@ class SubcodeProd < ActiveRecord::Base
 
   validates :subcode, presence: true  
 
+
   scope :subcodeexist, ->(product_id) { where(product_id: product_id) }
 
 end

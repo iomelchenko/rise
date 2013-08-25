@@ -4,5 +4,6 @@ class Subgroup < ActiveRecord::Base
   has_many :products
   has_many :line_items    
   attr_accessible :describe, :name
-  validates :name, :presence => true
+  validates :name, presence: true, uniqueness: true
+
 end

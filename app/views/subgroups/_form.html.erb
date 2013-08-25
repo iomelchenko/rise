@@ -1,13 +1,21 @@
 <%= form_for([@group, @group.subgroups.build]) do |f| %>
-  <p>
-    <%= f.label :"Наименование новой подгруппы" %><br />
-    <%= f.text_field :name %>
+ <div class="control-group">
+    <%= f.label :"Наименование новой подгруппы", :class => 'control-label' %><br />
+   <div class="controls"> 
+    <%= f.text_field :name, :class => 'text_field' %>
+   </div>
+ </div>
+
+ <div class="control-group"> 
+    <%= f.label :"Описание", :class => 'control-label' %><br />
+   <div class="controls">     
+    <%= f.text_area :describe, :class => 'text_field', :rows => "2" %>
+   </div>    
   </p>
-  <p>
-    <%= f.label :"Описание" %><br />
-    <%= f.text_area :describe %>
-  </p>
-  <p>
-    <%= f.submit "Создать" %>
-  </p>
+ </div>
+  <div class="form-actions">
+    <%= f.submit submit_text_button, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => "Вернуться к перечню"),
+                groups_path, :class => 'btn' %>
+  </div> 
 <% end %>

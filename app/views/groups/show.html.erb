@@ -1,20 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Наименование группы:</b>
-  <%= @group.name %>
-</p>
+<div class="page-header">
+  <h3>Группа "<%= @group.name %>"</h3>
+</div>
 
 <p>
   <b>Описание:</b>
   <%= @group.discribe %>
 </p>
 
-<h3>Подгруппы</h3>
-<%= render @group.subgroups %>
 
-<h3>Добавление подгруппы в данную группу:</h3>
+<div class="page-header">
+  <h3>Подгруппы</h3>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Наименование подгруппы</th>
+      <th>Описание</th>
+      <th><%=t '.actions', :default => "Действие" %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>  
+<%= render @group.subgroups %>
+</table>
+
+<h3>Добавление подгруппы в группу "<%= @group.name %>":</h3>
 <%= render "subgroups/form" %>
 
-<%= link_to 'Редактировать', edit_group_path(@group) %> |
-<%= link_to 'Вернуться к перечню групп', groups_path %>

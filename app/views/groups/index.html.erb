@@ -1,25 +1,45 @@
-<h2>Перечень товарных групп</h2>
+<div class="page-header">
+  <h3>Перечень товарных групп</h3>
+</div>
 
-<table>
-  <tr>
-    <th>Наименование группы</th>
-    <th>Описание</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @groups.each do |group| %>
-  <tr>
-    <td><%= group.name %></td>
-    <td><%= group.discribe %></td>
-    <td><%= link_to 'Просмотреть', group %></td>
-    <td><%= link_to 'Редактировать', edit_group_path(group) %></td>
-    <td><%= link_to 'Удалить', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Наименование группы</th>
+      <th>Описание</th>
+      <th><%=t '.actions', :default => "Действие" %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>  
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.name %></td>
+        <td><%= group.discribe %></td>
+        <td>
+          <%= link_to t('.show', :default => "Просмотреть/Добавить подгруппу"),
+                      group, :class => 'btn btn-mini' %>          
+          <%= link_to t('.edit', :default => "Редактировать"),
+                      edit_group_path(group), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => "Удалить"),
+                      group_path(group),
+                      :method => :delete,
+                      data: { confirm: 'Вы уверены?', :text => "QQ" },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+
 </table>
 
 <br />
 
-<%= link_to 'Создать новую группу', new_group_path %>
+<%= link_to t('.new', :default => "Создать новую группу"),
+            new_group_path,
+            :class => 'btn btn-primary' %>

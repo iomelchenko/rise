@@ -1,9 +1,9 @@
 <%= form_for([@product, @subcode_prod]) do |f| %>
   <p>
-    <%= f.label :Subcode %><br />
+    <%= f.label :"Код товарной позиции" %><br />
     <%= f.text_field :subcode %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit submit_text_button %>
   </p>
 <% end %>

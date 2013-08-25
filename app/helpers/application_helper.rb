@@ -34,6 +34,17 @@ module ApplicationHelper
 
         false
     end
-   
+
+    def submit_text_button
+      if params["action"] == "new"
+        "Создать" 
+      elsif params["action"] == "show" and params["controller"] == "groups"
+        "Создать подгруппу"  
+      elsif params["action"] == "show" and params["controller"] == "products"
+        "Добавить код товарной позиции"
+      else         
+        "Изменить"
+      end    
+    end
 
 end
