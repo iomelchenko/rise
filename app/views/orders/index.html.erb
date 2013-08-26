@@ -1,32 +1,40 @@
-<h1>Listing orders</h1>
+<div class="page-header">
+  <h3>Перечень заказов:</h3>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Email</th>
-    <th>Pay type</th>
-    <th>Ship_date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @orders.each do |order| %>
-  <tr>
-    <td><%= order.name %></td>
-    <td><%= order.address %></td>
-    <td><%= order.email %></td>
-    <td><%= order.paytype.pay_type %></td>
-    <td><%= order.ship_date %></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= :"Код заказа" %></th>
+      <th><%= :"Дата заказа" %></th>
+      <th><%= :"Контакт" %></th>      
+      <th><%= :"Сумма заказа" %></th>      
+      <th><%= :"Кол-во единиц" %></th>      
+      <th><%=t '.actions', :default => "Действие" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id  %></td>
+        <td><%= order.created_at.to_formatted_s(:db)  %></td>
+        <td><%= order.email  %></td>        
+        <td><%= order.line_items.to_a.sum { |item| item.price }  %></td>        
+        <td><%= order.line_items.to_a.sum { |item| item.quantity }  %></td>          
+        <td>
+          <%= link_to t('.show', :default => "Просмотреть"),
+                      order, :class => 'btn btn-mini' %>          
+          <%= link_to t('.edit', :default => "Редактировать"),
+                      edit_order_path(order), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => "Удалить"),
+                      order,
+                      :method => :delete,
+                      data: { confirm: 'Вы уверены в удалении заказа из базы данных?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Order', new_order_path %>
 <p> <%= will_paginate @orders %> </p>

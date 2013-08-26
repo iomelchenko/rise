@@ -1,6 +1,6 @@
 <% javascript javascripts_dynamic_subgroups_path %>
 
-<%= form_for(@product, :html => { multipart: true  }) do |f| %>
+<%= form_for(@product, :html => { :class => 'form-horizontal' }) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -13,31 +13,46 @@
     </div>
   <% end %>
 
-  <div class="field">
+ <div class="control-group">
     <%= f.label :"Наименование" %><br />
+  <div class="controls">    
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :"Описание (в описание используйте теги <p> </p> для структурированного отображения текста)" %><br />
-    <%= f.text_area :description, rows: 6 %>
+ </div>
+ <div class="control-group">
+    <%= f.label :"Описание (в описание используйте теги <p> </p> для структурированного отображения текста)" %>
+  <div class="controls">    
+    <%= f.text_area :description, rows: 4 %>
   </div>
-  <p>
-      <label for="product_group_id">Group:</label>
-      <%= f.collection_select :group_id, Group.find(:all), :id, :name, :prompt => "Select a Group" %>
-  </p>
-  <p id="subgroup_field">
-      <label for="product_subgroup_id">Subgroup:</label>
-      <%= f.collection_select :subgroup_id, Subgroup.find(:all), :id, :name, :prompt => "Select Subgroup" %>
-  </p>
-  <div class="field">
-    <%= f.label "Загрузить картинку" %><br />
+ </div>
+ <div class="control-group">
+      <label for="product_group_id">Группа:</label>
+  <div class="controls">      
+      <%= f.collection_select :group_id, Group.find(:all), :id, :name, :prompt => "Выберите группу" %>
+  </div>
+ </div>
+ <div class="control-group">
+      <label for="product_subgroup_id">Подгруппа:</label>
+  <div class="controls">      
+      <%= f.collection_select :subgroup_id, Subgroup.find(:all), :id, :name, :prompt => "Выберите подгруппу" %>
+  </div>
+ </div>
+ <div class="control-group">
+    <%= f.label "Загрузить картинку" %>
+  <div class="controls">    
     <%= f.file_field :image %>
   </div>
-  <div class="field">
-    <%= f.label :"Цена" %><br />
+ </div>
+ <div class="control-group">
+    <%= f.label :"Цена" %>
+  <div class="controls">    
     <%= f.text_field :price %>
   </div>
-  <div class="actions">
-    <%= f.submit submit_text_button %>
-  </div>
+ </div>
+
+  <div class="form-actions">
+    <%= f.submit submit_text_button, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => "Вернуться к перечню"),
+                products_path, :class => 'btn' %>
+  </div>  
 <% end %>

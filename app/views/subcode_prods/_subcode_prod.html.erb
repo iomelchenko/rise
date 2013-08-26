@@ -1,14 +1,17 @@
-  <p>
-    <strong>Код товарной позиции:</strong>
-    <%= subcode_prod.subcode %>
-  </p>
 
-  <p>
-  <%= link_to 'Редактировать', edit_product_subcode_prod_path(@product, subcode_prod) %> 
-  </p>
+  <tbody>
+      <tr>
+        <td><%= subcode_prod.subcode %></td>
+        <td>
+        
+          <%= link_to t('.edit', :default => "Редактировать"),
+                      edit_product_subcode_prod_path(@product, subcode_prod), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => "Удалить"),
+                      [subcode_prod.product, subcode_prod],
+                      :method => :delete,
+                      data: { confirm: 'Вы уверены?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
 
-  <p>
-  <%= link_to 'Удалить', [subcode_prod.product, subcode_prod],
-               :confirm => 'Вы уверены?',
-               :method => :delete %>
-  </p>
+  </tbody>  

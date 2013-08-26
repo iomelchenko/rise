@@ -1,14 +1,14 @@
-<h2>Перечень продуктов каталога</h2>
+<div class="page-header">
+  <h3>Перечень продуктов каталога</h3>
+</div>
 
 <table>
-
-
 
 <% @products.each do |product| %>
 
   <tr class=<%= cycle('list_line_odd', 'list_line_even') %>>
     <td>
-      <%= image_tag(product.image.url, class: 'list_image') %>
+      <%= image_tag(product.image.url, class: 'list_image') if product.image? %>
     </td>
 
     <td class="list_description">
@@ -16,12 +16,20 @@
          <dt><%= product.title %></dt>
          <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
       </dl>
+      <dl>
+         <dd> <b>Группа:</b>
+          <%= group_subgroup_name Group, product.group_id %></dd>
+      </dl>     
+      <dl>
+         <dd> <b>Подгруппа:</b>
+          <%= group_subgroup_name Subgroup, product.subgroup_id %></dd>
+      </dl>        
     </td>
     <td class="list_actions">
 
     <%= link_to 'Просмотреть / Добавить коды товаров', product %> <br/>
     <%= link_to 'Редактировать', edit_product_path(product) %> <br/>
-    <%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверены?' } %>
   </td>
   </tr>
 <% end %>
@@ -29,4 +37,7 @@
 
 <br />
 
-<%= link_to 'Добавить новый продукт', new_product_path %>
+<%= link_to t('.new', :default => "Добавить новый продукт"),
+            new_product_path,
+            :class => 'btn btn-primary' %>
+<p> <%= will_paginate @products %> </p>            

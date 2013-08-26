@@ -1,29 +1,73 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h3>Детали заказа №  <%= @order.id %>  от <%= @order.created_at.to_formatted_s(:db)  %></h3>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= :"Заказчик" %>:</strong></dt>
+  <dd><%= @order.name %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= :"Адрес заказчика" %>:</strong></dt>
+  <dd><%= @order.address %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= :"Контактный EMAIL" %>:</strong></dt>
+  <dd><%= @order.email %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= :"Тип платежа" %>:</strong></dt>
+  <dd><%= @order.paytype.pay_type %></dd>
+</dl>
+<% if @order.ship_date %>
+<dl class="dl-horizontal">
+  <dt><strong><%= :"Дата доставки" %>:</strong></dt>
+  <dd><%= @order.ship_date %></dd>
+</dl>
+<% end %>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Наименование продукта</th>
+      <th>Код</th>
+      <th>Количество</th>
+      <th>Цена</th>
+      <th>Сумма</th>
+    </tr>
+  </thead>  
+  <% @order.line_items.each do |item| %>
+  <tbody>
+      <tr>
+        <td><%= item.product.title %></td>
+        <td><%= item.subcode_prod.subcode if item.subcode_prod_id != 0 %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.price %></td>
+        <td><%= item.price * item.quantity %></td>
+      </tr>
+
+  </tbody>
+<% end %>  
+</table>
 
 <p>
-  <b>Name:</b>
-  <%= @order.name %>
+  Общая сумма заказа, 
+
+  <%= number_to_currency(@order.line_items.to_a.sum { |item| (item.price*item.quantity) }, :unit => "грн. ", :separator => ",") %>
+
 </p>
 
-<p>
-  <b>Address:</b>
-  <%= @order.address %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @order.email %>
-</p>
-
-<p>
-  <b>Pay type:</b>
-  <%= @order.paytype.pay_type %>
-</p>
-
-<p>
-  <b>Ship_date:</b>
-  <%= @order.ship_date %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => "Вернуться к перечню"),
+              orders_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => "Редактировать"),
+              edit_order_path(@order), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => "Удалить"),
+              order_path(@order),
+              :method => 'delete',
+              data: { confirm: 'Вы уверены в удалении заказа из базы данных?' },
+              :class => 'btn btn-danger' %>
+</div>

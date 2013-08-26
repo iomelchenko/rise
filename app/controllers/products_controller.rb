@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-
+    @products = Product.order(:group_id)
+    page 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -88,6 +88,11 @@ class ProductsController < ApplicationController
      respond_to do |format|
        format.atom
      end  
+  end
+
+  def page
+    @products = @products.paginate page: params[:page], order: "price",
+              per_page: 4   
   end
 
 end

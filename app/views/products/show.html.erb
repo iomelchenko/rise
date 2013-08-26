@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Товар:</b> 
-  <%= @product.title %>
-</p>
+<div class="page-header">
+  <h3>Продукт "<%= @product.title %>"</h3>
+</div>
 
 <p>
   <b>Описание:</b> </br>
@@ -28,20 +25,37 @@
  <% if current_user_admin? %>
     <p>
       <b>Группа:</b> 
-      <%= @product.group.name %>
+      <%= group_subgroup_name Group, @product.group_id %>
     </p>
 
     <p>
       <b>Подгруппа:</b> 
-      <%= @product.subgroup.name %>
+      <%= group_subgroup_name Subgroup, @product.subgroup_id %>
     </p>     
-     <h3>Коды товарных позиций</h3>
-     <%= render @product.subcode_prods %>
 
-     <h3>Добавить код к данному продукту:</h3>
+     <div class="page-header">
+        <h3>Коды товарных позиций</h3>
+     </div>
+
+     <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Код товарной позиции</th>
+            <th><%=t '.actions', :default => "Действие" %></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>  
+ <%= render @product.subcode_prods %>
+
+     </table>
+     
+     <div class="page-header">
+        <h3>Добавить Код товарной позиции к продукту: "<%= @product.title %>"</h3>
+     </div>
      <%= render "subcode_prods/form" %>
-     <%= link_to 'Редактировать продукт', edit_product_path(@product) %> |
-     <%= link_to 'Вернуться к перечню продуктов', products_path %>
+
 
   <% else %>
 

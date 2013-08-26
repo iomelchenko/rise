@@ -9,7 +9,7 @@ class StoreController < ApplicationController
   end
 
   def index
-  	@products = Product.order(:title)
+  	@products = Product.order(:price)
     page  
   end
 

@@ -1,9 +1,14 @@
 <%= form_for([@product, @product.subcode_prods.build]) do |f| %>
-  <p>
+ <div class="control-group">
     <%= f.label :"Введите код товара" %><br />
+   <div class="controls">    
     <%= f.text_field :subcode %>
-  </p>
-  <p>
-    <%= f.submit submit_text_button%>
-  </p>
+   </div>
+ </div>
+
+  <div class="form-actions">
+    <%= f.submit submit_text_button, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => "Вернуться к перечню"),
+                products_path, :class => 'btn' %>
+  </div>   
 <% end %>
